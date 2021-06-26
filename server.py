@@ -35,9 +35,9 @@ def handler_client(conn, addr):#aici primesc si trimit mesaje pe server
                 nrOfProducts=len(whatHappens)
                 myString=''
                 for a in whatHappens:
-                    myString = myString + a.name + '^'
-                    myString = myString + str(a.price) + '^'
-                    myString = myString + str(a.stoc) + '^'
+                    myString = myString + a.name + 'asf'
+                    myString = myString + str(a.price) + 'asf'
+                    myString = myString + str(a.stoc) + 'asf'
                     myString = myString + a.description + '&'
                 conn.send(myString.encode(FORMAT))
                 conn.close()

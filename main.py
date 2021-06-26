@@ -132,15 +132,18 @@ def serverRequest(message):
 
 
 def getCommands(email):
-    myString = "sendCommands^"
+    myString = "sendCommandsasf"
     connection = sqlite3.connect('sqlite3_aplication.db')
     cursor = connection.cursor()
     cursor.execute('SELECT products FROM Commands WHERE user=?',(email,))
     rows = cursor.fetchall()
     for row in rows:
-        myString += row[0]+"^"
+        myString += row[0]+"&"
     connection.commit()
     connection.close()
+
+    myString=myString[0:len(myString)-1]
+    print(myString)
     return myString
 
 
@@ -175,6 +178,7 @@ def sendProducts():
     rows = cursor.fetchall()
     for row in rows:
         prod = Product(row[0], row[1], row[2], row[3], row[4])
+        print(row)
         myList.append(prod)
     connection.commit()
     connection.close()
@@ -247,6 +251,7 @@ def createTable():
 
 
 #createTable()
+
 #insertCommand('alin@gmail.com', 'Laptop-Hp, Smartphone-A32, Televizor-Led')
 # cursor.execute('DROP TABLE Users')
 # cursor.execute('Create Table Users (id INTEGER  PRIMARY KEY AUTOINCREMENT, name TEXT, email TEXT, password TEXT, birthDate Text, address TEXT)') #tabel Users created
